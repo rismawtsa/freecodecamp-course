@@ -1,6 +1,6 @@
 # FreeCodeCamp Course Log
 
-Record the lessons that i have learned on Freecodecamp
+Record the lessons that i have learned on FreeCodeCamp
 
 1. JavaScript Algorithms and Data Structures
 
