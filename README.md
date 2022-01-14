@@ -1,4 +1,4 @@
-# freeCodeCamp-course
+# FreeCodeCamp Course Log
 
 Record the lessons that i have learned on Freecodecamp
 
