@@ -2,7 +2,7 @@
 
 Record the lessons that i have learned on Freecodecamp
 
-1. [JavaScript Algorithms and Data Structures](https://github.com/rismawtsa/freecodecamp-course/blob/main/JavascriptAlgorithmsAndDataStructure)
+1. JavaScript Algorithms and Data Structures
 
     - Basic Javascript
     - ES6
