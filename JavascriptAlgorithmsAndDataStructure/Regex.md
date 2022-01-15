@@ -242,6 +242,7 @@ You've learned that you can use a shortcut to match alphanumerics `[A-Za-z0-9_]`
 You can search for the opposite of the `\w` with `\W`. Note, the opposite pattern uses a capital letter. This shortcut is the same as `[^A-Za-z0-9_]`.
 
 **Instruction**
+
 Use the shorthand character class \W to count the number of non-alphanumeric characters in various quotes and strings.
 
 **Code**
@@ -279,3 +280,212 @@ let movieName = "2001: A Space Odyssey";
 let noNumRegex = /\D/g; // Change this line
 let result = movieName.match(noNumRegex).length;
 ```
+
+### Restrict Possible Usernames
+
+It is a tough step so far
+
+**Instruction*
+
+- Usernames can only use alpha-numeric characters.
+- The only numbers in the username have to be at the end. There can be zero or more of them at the end. Username cannot start with the number.
+- Username letters can be lowercase and uppercase.
+- Usernames have to be at least two characters long. A two-character username can only use alphabet letters as characters.
+
+**Code**
+
+```
+let username = "BadUs3rmr5";
+let userCheck = /^[a-z][a-z]+\d*$|^[a-z]\d\d+$/i; // Change this line
+let result = userCheck.test(username);
+
+**Code Explanation**
+
+^ - start of input
+[a-z] - first character is a letter
+[a-z]+ - following characters are letters
+\d*$ - input ends with 0 or more digits
+| - or
+^[a-z] - first character is a letter
+\d\d+ - following characters are 2 or more digits
+$ - end of input
+```
+
+### Match Whitespace
+
+You can search for whitespace using `\s`, which is a lowercase s. This pattern not only matches whitespace, but also carriage return, tab, form feed, and new line characters. You can think of it as similar to the character class `[ \r\t\f\n\v]`.
+
+**Instruction**
+
+Change the regex countWhiteSpace to look for multiple whitespace characters in a string.
+
+**Code**
+```
+let sample = "Whitespace is important in separating words";
+let countWhiteSpace = /\s/g; // Change this line
+let result = sample.match(countWhiteSpace);
+```
+
+### Match Non-Whitespace characters
+
+We can match non-whitespace characters using `\S`, s uppercase. This pattern will not match whitespace, carriage return, tab, form feed and new line characters. You can think of it being similar to the character class `[^ \r\t\f\n\v]`.
+
+**Instruction**
+
+Change the regex countNonWhiteSpace to look for multiple non-whitespace characters in a string.
+
+**Code**
+```
+let sample = "Whitespace is important in separating words";
+let countNonWhiteSpace = /\S/g; // Change this line
+let result = sample.match(countNonWhiteSpace);
+```
+
+### Specify Upper and Lower Number of Matches
+
+Recall the `+` sign is used to look for one or more characters adn the `*` sign to look for zero and more characters. These are convinient but sometimes we want to **match a certain range of pattern**.
+
+Patterns: Quantity Specifier `{lower, upper}`
+
+Example
+```
+\a{3, 5}h\
+
+* To match only the letter a appearing between 3 and 5 times in a string ah
+'aaah' true
+'aah' false
+'aaaaah' true
+```
+
+**Instruction**
+
+Change the regex ohRegex to match the entire phrase Oh no only when it has 3 to 6 letter h's.
+
+**Code**
+
+```
+let ohStr = "Ohhhhhhh no";
+let ohRegex = /Oh{3,6} no/; // Change this line
+let result = ohRegex.test(ohStr);
+
+console.log({result})
+```
+----
+
+### Specify Only The Lower Number of Matches
+
+Patterns: Quantity Specifier `{lowerNumber,}`
+
+Example
+```
+\ha{3,}h\
+
+* To match only the letter a appering at least 3 times in a string hah
+'haaah' true
+'haah' false
+'haaaah' true
+```
+**Instruction**
+
+Change the regex haRegex to match the word Hazzah only when it has four or more letter z's.
+
+**Code**
+```
+let haStr = "Hazzzzah";
+let haRegex = /Haz{4,}ah/; // Change this line
+let result = haRegex.test(haStr);
+```
+
+### Specify Exact Number of Matches
+
+Patterns: Quantity Specifier `{number}`
+
+Example
+```
+\ha{3}h\
+
+*Match only the word hah with the letter a appears 3 times
+'haaah' true
+'haaaah' false
+```
+
+**Instruction**
+
+Change the regex timRegex to match the word Timber only when it has four letter m's.
+
+**Code**
+```
+let timStr = "Timmmmber";
+let timRegex = /Tim{4}ber/; // Change this line
+let result = timRegex.test(timStr);
+```
+
+### Check for All or None
+
+Pattern: `?`
+
+Example
+```
+\colou?r\
+
+*Match the string color or colour (letter u can be appear after letter o or not)
+'color' true
+'colour' true
+'coloar' false
+```
+
+**Instructions**
+
+Change the regex favRegex to match both the American English (favorite) and the British English (favourite) version of the word.
+
+**Code**
+```
+let favWord = "favorite";
+let favRegex = /favou?rite/; // Change this line
+let result = favRegex.test(favWord);
+
+console.log({result})
+```
+
+### Positive and Negative Lookhead
+
+There are two kinds of lookaheads: positive lookahead and negative lookahead.
+
+A positive lookahead will look to make sure the element in the search pattern is there, but **won't actually match it**. A positive lookahead is used as (?=...) where the ... is the required part that is not matched.
+
+On the other hand, a negative lookahead will look to make sure the element in the search pattern is not there. A negative lookahead is used as (?!...) where the ... is the pattern that you do not want to be there. The rest of the pattern is returned if the negative lookahead part is not present.
+
+**Instruction**
+
+Use lookaheads in the pwRegex to match passwords that are greater than 5 characters long, and have two consecutive digits.
+
+**Code**
+```
+let sampleWord = "astronaut";
+let pwRegex = /(?=\w{5,})(?=\D+\d\d)/; // Change this line
+let result = pwRegex.test(sampleWord);
+```
+
+### Check For Mixed Grouping of Characters
+
+Sometimes we want to check for groups of characters using a Regular Expression and to achieve that we use parentheses ().
+
+If you want to find either Penguin or Pumpkin in a string, you can use the following Regular Expression: /P(engu|umpk)in/g
+
+**Instruction**
+
+Fix the regex so that it checks for the names of Franklin Roosevelt or Eleanor Roosevelt in a case sensitive manner and it should make concessions for middle names.
+
+Then fix the code so that the regex that you have created is checked against myString and either true or false is returned depending on whether the regex matches.
+
+**Code**
+```
+let myString = "Franklin Roosevelt";
+let myRegex = /(Franklin|Eleanor)\s\w*\W*\s*Roosevelt$/; // Change this line
+let result = myRegex.test(myString); // Change this line
+// After passing the challenge experiment with myString and see how the grouping works
+
+console.log({result, match: myString.match(myRegex)})
+```
+### Reuse Patterns Using Capture Groups
+
