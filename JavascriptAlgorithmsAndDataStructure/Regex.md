@@ -489,3 +489,26 @@ console.log({result, match: myString.match(myRegex)})
 ```
 ### Reuse Patterns Using Capture Groups
 
+==Need to be relearn==
+
+Reference
+https://www.regular-expressions.info/anchors.html
+
+### Use Capture Groups to Search and Replace
+
+```
+let wrongText = "The sky is silver.";
+let silverRegex = /silver/;
+wrongText.replace(silverRegex, "blue");
+```
+
+### Remove Whitespace from Start and End
+
+```
+let hello = "   Hello, World!  ";
+let wsRegex = /^\s+|\s+$/g; // Change this line
+let result = hello.replace(wsRegex, ''); // Change this line
+
+console.log({result})
+```
+
