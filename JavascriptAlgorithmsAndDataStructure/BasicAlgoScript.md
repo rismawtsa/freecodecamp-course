@@ -1,4 +1,4 @@
-## Javascript Algorithms and Data Structure > [Basic Data Structures](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/basic-algorithm-scripting)
+## Javascript Algorithms and Data Structure > [Basic Algorithm Scripting](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/basic-algorithm-scripting)
 
 ### - Convert Celsius to Fahrenheit
 
