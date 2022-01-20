@@ -240,6 +240,70 @@ console.log(bouncer([7, "ate", "", false, 9]));
 
 ### - Where do I Belong
 
+Return the lowest index at which a value (second argument) should be inserted into an array (first argument) once it has been sorted. The returned value should be a number.
 
+For example, getIndexToIns([1,2,3,4], 1.5) should return 1 because it is greater than 1 (index 0), but less than 2 (index 1).
 
+Likewise, getIndexToIns([20,3,5], 19) should return 2 because once the array has been sorted it will look like [3,5,20] and 19 is less than 20 (index 2) and greater than 5 (index 1).
 
+```
+function getIndexToIns(arr, num) {
+  arr.sort((a,b) => a-b);
+  let index = 0;
+  for(let i=0; i<arr.length - 1; i++) {
+    if (num === arr[i]) {
+      index = i;
+    } else if (num > arr[i] && num < arr[i+1]) {
+      index = i + 1;
+    } else if (num > arr[i+1]) {
+      index = i + 2;
+    }
+  }
+
+  return index;
+}
+```
+
+### - Mutations
+
+Return true if the string in the first element of the array contains all of the letters of the string in the second element of the array.
+
+For example, \["hello", "Hello"], should return true because all of the letters in the second string are present in the first, ignoring case.
+
+The arguments \["hello", "hey"] should return false because the string hello does not contain a y.
+
+Lastly, \["Alien", "line"], should return true because all of the letters in line are present in Alien.
+
+```
+function mutation(arr) {
+  let result = true;
+  for (let c of arr[1].toLowerCase()) {
+    if(arr[0].toLowerCase().indexOf(c) < 0) {
+      result = false;
+      break;
+    }
+  }
+  return result;
+}
+
+console.log(mutation(["hello", "neo"]));
+```
+### - Chunky Monkey
+
+Write a function that splits an array (first argument) into groups the length of size (second argument) and returns them as a two-dimensional array.
+
+```
+function chunkArrayInGroups(arr, size) {
+  let newArr = [];
+  for(let i=0; i<arr.length; i+=size) {
+    let arr1 = [];
+    for(let j=i; j< i+size && j < arr.length; j++) {
+      arr1.push(arr[j]);
+    }
+    newArr.push(arr1)
+  }
+  return newArr;
+}
+
+console.log(chunkArrayInGroups([0, 1, 2, 3, 4, 5], 4));
+```
