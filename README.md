@@ -1,6 +1,6 @@
 # FreeCodeCamp Course Log
 
-This is documentions while i take course on the FreeCodeCamp site
+This is the documentation of the course I took on FreeCodeCamp
 
 1. JavaScript Algorithms and Data Structures
 
